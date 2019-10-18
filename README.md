@@ -1,4 +1,4 @@
-# Terraform Module Name: terraform-aws-module-s3
+# Terraform Module Name: terraform-module-aws-s3
 
 
 ## General
