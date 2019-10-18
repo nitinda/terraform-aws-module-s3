@@ -7,21 +7,43 @@ This module may be used to create S3 resources in AWS cloud provider..
 
 ---
 
-## Features
 
-Below we are able to check the resources that are being created as part of this module call:
+## Prerequisites
 
-From branch : *terraform-11*
+This module needs Terraform 0.11.10 or newer.
+You can download the latest Terraform version from [here](https://www.terraform.io/downloads.html).
+
+This module deploys S3 bucket.
 
 
-From branch : *terraform-12*
+---
+
+## Below are the resources that are launched by this module
+
+- S3
 
 
 ---
 
 ## Usage
 
-The variables that required in order for the module to be successfully called from the layers are the following:
+## Using this repo
+
+To use this module, add the following call to your code:
+
+```tf
+module "<layer>-s3-<AccountID>" {
+  source = "git::https://github.com/nitinda/terraform-module-aws-s3.git?ref=master"
+
+
+}
+```
+---
+
+## Inputs
+
+The variables required in order for the module to be successfully called from the deployment repository are the following:
+
 
 | Variable            |          Description         |    Type    |
 |---------------------|------------------------------|------------|
@@ -70,4 +92,4 @@ data "terraform_remote_state" "<module_name>" {
 ```
 
 ## Authors
-Module maintained by Module maintained by the [Nitin Das]
+Module maintained by Module maintained by the - Nitin Das
