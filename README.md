@@ -45,12 +45,14 @@ module "<layer>-s3-<AccountID>" {
 The variables required in order for the module to be successfully called from the deployment repository are the following:
 
 
-| Variable            |          Description         |    Type    |
-|---------------------|------------------------------|------------|
-| <varriable_name>    | <description>                | <type>     |
-| bucket_name         | Bucket name                  | string     |
-| lifecycle_rule      | Lifecycle rule               | string     |
-| common_tags         | Tags                         | map        |
+| Variable                             |          Description                        |    Type      |
+|--------------------------------------|---------------------------------------------|--------------|
+| bucket_name                          | Bucket name                                 | string       |
+| lifecycle_rule                       | Lifecycle rule                              | string       |
+| common_tags                          | Tags                                        | map          |
+| server_side_encryption_configuration | A configuration of server-side encryption   | list of map  |
+| bucket_public_access_block           | Manages S3 account-level Public Access      | list of map  |
+|--------------------------------------|---------------------------------------------|--------------|
 
 
 Details are in respective branch.

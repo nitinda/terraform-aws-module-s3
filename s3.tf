@@ -4,7 +4,6 @@ resource "aws_s3_bucket" "s3_bucket" {
   force_destroy                        = true
   lifecycle_rule                       = "${var.lifecycle_rule}"
   server_side_encryption_configuration = "${var.server_side_encryption_configuration}"
-  replication_configuration            = "${var.replication_configuration}"
   tags                                 = "${var.common_tags}"
 }
 

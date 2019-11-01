@@ -4,17 +4,12 @@ variable "bucket_name" {
 }
 
 variable "lifecycle_rule" {
-  description = "description"
+  description = "A configuration of object lifecycle management"
   type        = "list"
 }
 
 variable "server_side_encryption_configuration" {
   description = "A configuration of server-side encryption configuration"
-  type        = "list"
-}
-
-variable "replication_configuration" {
-  description = "A configuration of replication configuration"
   type        = "list"
 }
 
