@@ -34,8 +34,54 @@ To use this module, add the following call to your code:
 ```tf
 module "<layer>-s3-<AccountID>" {
   source = "git::https://github.com/nitinda/terraform-module-aws-s3.git?ref=terraform-11"
+  
+  providers = {
+    aws = "aws" #Changes based on providers
+  }
 
+  # Tags
+  common_tags = "${var.common_tags}"
 
+  # S3
+  bucket_name = "demo-s3-${data.aws_caller_identity.demo_caller_identity_current.account_id}"
+  lifecycle_rule = [{
+    id      = "log_expiration_lifecycle_rule"
+    prefix  = ""
+    enabled = true
+    noncurrent_version_transition = [{
+      days          = "${var.noncurrent_version_transition}"
+      storage_class = "STANDARD_IA"
+    }]
+
+    noncurrent_version_transition = [{
+      days          = 60
+      storage_class = "GLACIER"
+    }]
+
+    expiration = [{
+      expired_object_delete_marker = true
+    }]
+    
+    noncurrent_version_expiration = [{
+      days = 90
+    }]
+    abort_incomplete_multipart_upload_days = 1 
+  }]
+
+  server_side_encryption_configuration = [{
+    rule = [{
+      apply_server_side_encryption_by_default = [{
+        sse_algorithm = "AES256"
+      }]
+    }]
+  }]
+
+  bucket_public_access_block = {
+    block_public_acls       = true
+    block_public_policy     = true
+    ignore_public_acls      = true
+    restrict_public_buckets = true
+  }
 }
 ```
 ---
