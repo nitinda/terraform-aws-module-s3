@@ -29,8 +29,6 @@ From branch : *terrform-12* *work in progress*
 
 - *S3 bucket (Terraform 12 supported code - work in progres)*
 
----
-
 
 ---
 
