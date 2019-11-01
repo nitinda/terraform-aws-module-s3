@@ -13,7 +13,23 @@ This module may be used to create S3 resources in AWS cloud provider..
 This module needs Terraform 0.11.10 or newer.
 You can download the latest Terraform version from [here](https://www.terraform.io/downloads.html).
 
-This module deploys S3 bucket.
+This module deploys aws services details are in respective feature branches.
+
+---
+
+## Features Branches
+
+Below we are able to check the resources that are being created as part of this module call:
+
+From branch : *terrform-11*
+
+- *S3 bucket (Terraform 11 supported code)*
+
+From branch : *terrform-12* *work in progress*
+
+- *S3 bucket (Terraform 12 supported code - work in progres)*
+
+---
 
 
 ---
