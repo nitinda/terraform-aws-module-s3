@@ -33,7 +33,7 @@ To use this module, add the following call to your code:
 
 ```tf
 module "<layer>-s3-<AccountID>" {
-  source = "git::https://github.com/nitinda/terraform-module-aws-s3.git?ref=master"
+  source = "git::https://github.com/nitinda/terraform-module-aws-s3.git?ref=terraform-11"
 
 
 }
@@ -52,7 +52,6 @@ The variables required in order for the module to be successfully called from th
 | common_tags                          | Tags                                        | map          |
 | server_side_encryption_configuration | A configuration of server-side encryption   | list of map  |
 | bucket_public_access_block           | Manages S3 account-level Public Access      | list of map  |
-|--------------------------------------|---------------------------------------------|--------------|
 
 
 Details are in respective branch.
