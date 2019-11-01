@@ -62,9 +62,7 @@ The variables required in order for the module to be successfully called from th
 | Variable            |          Description         |    Type    |
 |---------------------|------------------------------|------------|
 | <varriable_name>    | <description>                | <type>     |
-| bucket_name         | Bucket name                  | string     |
-| lifecycle_rule      | Lifecycle rule               | string     |
-| common_tags         | Tags                         | map        |
+
 
 
 Details are in respective branch.
