@@ -59,9 +59,9 @@ module "<layer>-s3-<AccountID>" {
 The variables required in order for the module to be successfully called from the deployment repository are the following:
 
 
-| Variable            |          Description         |    Type    |
-|---------------------|------------------------------|------------|
-| <varriable_name>    | <description>                | <type>     |
+| Variable               |          Description         |    Type    |
+|------------------------|------------------------------|------------|
+|                        |                              |            |
 
 
 
