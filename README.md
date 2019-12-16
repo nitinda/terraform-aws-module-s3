@@ -10,7 +10,7 @@ This module may be used to create **_S3_** resources in AWS cloud provider..
 
 ## Prerequisites
 
-This module needs **_Terraform 0.11.14_** or newer.
+This module needs **_Terraform 0.12.18_** or newer.
 You can download the latest Terraform version from [here](https://www.terraform.io/downloads.html).
 
 This module deploys aws services details are in respective feature branches.
@@ -21,9 +21,6 @@ This module deploys aws services details are in respective feature branches.
 
 Below we are able to check the resources that are being created as part of this module call:
 
-From branch : **_terraform-11/master_**
-
-- **_S3 bucket (Terraform 11 supported code)_**
 
 From branch : **_terraform-12/master_**
 
@@ -101,14 +98,13 @@ The variables required in order for the module to be successfully called from th
 |            **_Variable_**            |            **_Description_**                |  **_Type_**  |
 |--------------------------------------|---------------------------------------------|--------------|
 | bucket_name                          | Bucket name                                 | string       |
-| lifecycle_rule                       | Lifecycle rule                              | string       |
-| common_tags                          | Tags                                        | map          |
-| server_side_encryption_configuration | A configuration of server-side encryption   | list of map  |
-| bucket_public_access_block           | Manages S3 account-level Public Access      | list of map  |
+| lifecycle_rule                       | Lifecycle rule                              | any          |
+| common_tags                          | Resource Tags                               | map          |
+| server_side_encryption_configuration | A configuration of server-side encryption   | any          |
+| bucket_public_access_block           | Manages S3 account-level Public Access      | map(string)  |
+| versioning                           | S3 Object versioning Enable                 | map(string)  |
+| force_destroy                        | A boolean that indicates all objects        | bool         |
 
-
-
-Details are in respective branch.
 
 
 ## Outputs
@@ -116,8 +112,6 @@ Details are in respective branch.
 - **_s3\_arn_**
 - **_s3\_id_**
 
-
-Details are in respective branch.
 
 
 ### Usage
