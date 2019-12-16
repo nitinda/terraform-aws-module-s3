@@ -71,7 +71,7 @@ Details are in respective branch.
 ## Outputs
 
 - **_s3\_arn_**
-- **s3\_id**
+- **_s3\_id_**
 
 
 Details are in respective branch.
