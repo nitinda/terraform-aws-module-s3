@@ -47,7 +47,46 @@ To use this module, add the following call to your code:
 
 ```tf
 module "<layer>-s3-<AccountID>" {
-  source = "git::https://github.com/nitinda/terraform-module-aws-s3.git?ref=master"
+  source = "git::https://github.com/nitinda/terraform-module-aws-s3.git?ref=terraform-12/master"
+
+  ## Tags
+  common_tags = var.common_tags
+
+  ##
+  force_destroy          = true
+  s3_project_bucket_name = "s3-project-bucket-name"
+
+  versioning = {
+      enabled = false
+  }
+
+  server_side_encryption_configuration = {
+      rule = {
+          apply_server_side_encryption_by_default = {
+              sse_algorithm = "AES256"
+          }
+      }
+  }
+
+  lifecycle_rule = {
+      id      = "log_expiration_lifecycle_rule"
+      abort_incomplete_multipart_upload_days = 1
+      enabled = true
+
+      transition = [
+          {
+              days = 30
+              storage_class = "STANDARD_IA"
+          },
+          {
+              days = 60
+              storage_class = "GLACIER"
+          }
+      ],
+      expiration = {
+          days = 90
+      }
+  }
 
 
 }
@@ -59,9 +98,13 @@ module "<layer>-s3-<AccountID>" {
 The variables required in order for the module to be successfully called from the deployment repository are the following:
 
 
-| Variable               |          Description         |    Type    |
-|------------------------|------------------------------|------------|
-|                        |                              |            |
+|            **_Variable_**            |            **_Description_**                |  **_Type_**  |
+|--------------------------------------|---------------------------------------------|--------------|
+| bucket_name                          | Bucket name                                 | string       |
+| lifecycle_rule                       | Lifecycle rule                              | string       |
+| common_tags                          | Tags                                        | map          |
+| server_side_encryption_configuration | A configuration of server-side encryption   | list of map  |
+| bucket_public_access_block           | Manages S3 account-level Public Access      | list of map  |
 
 
 
