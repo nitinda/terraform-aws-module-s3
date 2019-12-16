@@ -3,14 +3,14 @@
 
 ## General
 
-This module may be used to create S3 resources in AWS cloud provider..
+This module may be used to create **_S3_** resources in AWS cloud provider..
 
 ---
 
 
 ## Prerequisites
 
-This module needs Terraform 0.11.10 or newer.
+This module needs **_Terraform 0.11.14_** or newer.
 You can download the latest Terraform version from [here](https://www.terraform.io/downloads.html).
 
 This module deploys aws services details are in respective feature branches.
@@ -21,20 +21,20 @@ This module deploys aws services details are in respective feature branches.
 
 Below we are able to check the resources that are being created as part of this module call:
 
-From branch : *terrform-11*
+From branch : **_terraform-11/master_**
 
-- *S3 bucket (Terraform 11 supported code)*
+- **_S3 bucket (Terraform 11 supported code)_**
 
-From branch : *terrform-12* *work in progress*
+From branch : **_terraform-12/master_**
 
-- *S3 bucket (Terraform 12 supported code - work in progres)*
+- **_S3 bucket (Terraform 12 supported code)_**
 
 
 ---
 
 ## Below are the resources that are launched by this module
 
-- S3
+- **_S3_**
 
 
 ---
@@ -70,8 +70,8 @@ Details are in respective branch.
 
 ## Outputs
 
-- *s3_arn*
-- *s3_id*
+- **_s3\_arn_**
+- **s3\_id**
 
 
 Details are in respective branch.
@@ -79,7 +79,8 @@ Details are in respective branch.
 
 ### Usage
 In order for the variables to be accessed on module level please use the syntax below:
-```bash
+
+```tf
 module.<module_name>.<output_variable_name>
 ```
 
@@ -87,7 +88,8 @@ If an output variable needs to be exposed on root level in order to be accessed 
 
 - Include the syntax above in the network layer output terraform file.
 - Add the code snippet below to the variables/global_variables file.
-```bash
+
+```tf
 data "terraform_remote_state" "<module_name>" {
   backend = "s3"
 
@@ -98,10 +100,12 @@ data "terraform_remote_state" "<module_name>" {
   }
 }
 ```
+
 - The output variable is able to be accessed through terraform state file using the syntax below:
-```bash
+
+```tf
 "${data.terraform_remote_state.<module_name>.<output_variable_name>}"
 ```
 
 ## Authors
-Module maintained by Module maintained by the - Nitin Das
+Module maintained by Module maintained by the - **_Nitin Das_**
