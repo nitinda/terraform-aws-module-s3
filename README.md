@@ -110,8 +110,8 @@ The variables required in order for the module to be successfully called from th
 
 ## Outputs
 
-- **_s3\_arn_**
-- **_s3\_id_**
+- **_arn_**
+- **_id_**
 
 
 
