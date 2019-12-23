@@ -1,7 +1,7 @@
 resource "aws_s3_bucket" "s3_bucket" {
   bucket        = var.s3_project_bucket_name
   force_destroy = var.force_destroy
-  tags          = var.common_tags
+  tags          = var.tags
 
   dynamic "lifecycle_rule" {
     for_each = var.lifecycle_rule == {} ? [] : [var.lifecycle_rule]

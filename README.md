@@ -95,15 +95,16 @@ module "<layer>-s3-<AccountID>" {
 The variables required in order for the module to be successfully called from the deployment repository are the following:
 
 
-|            **_Variable_**            |            **_Description_**                |  **_Type_**  |
-|--------------------------------------|---------------------------------------------|--------------|
-| bucket_name                          | Bucket name                                 | string       |
-| lifecycle_rule                       | Lifecycle rule                              | any          |
-| common_tags                          | Resource Tags                               | map          |
-| server_side_encryption_configuration | A configuration of server-side encryption   | any          |
-| bucket_public_access_block           | Manages S3 account-level Public Access      | map(string)  |
-| versioning                           | S3 Object versioning Enable                 | map(string)  |
-| force_destroy                        | A boolean that indicates all objects        | bool         |
+|**_Variable_** | **_Description_** | **_Type_** | **_Argument Status_** |
+|:----|:----|-----:|:---:|
+| **bucket\_name** | Bucket name | string | **_Required_** |
+| **_lifecycle\_rule_** | Lifecycle rule | any | **_Required_** |
+| **_tags_** | A mapping of tags to assign to the resource | map(string) | **_Required_** |
+| **_server\_side\_encryption\_configuration_** | A configuration of server-side encryption | any | **_Required_** |
+| **_bucket\_public\_access\_block_** | Manages S3 account-level Public Access | map(string) | **_Required_** |
+| **_versioning_** | S3 Object versioning Enable | map(string) | **_Required_** |
+| **_force\_destroy_** | A boolean that indicates all objects | bool | **_Required_** |
+
 
 
 
