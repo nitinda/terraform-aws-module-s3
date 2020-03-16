@@ -16,7 +16,7 @@ variable "acl" {
 
 variable "grant" {
   description = "An ACL policy grant"
-  default     = {}
+  default     = []
   type        = any
 }
 

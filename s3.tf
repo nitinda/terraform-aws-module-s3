@@ -4,7 +4,7 @@ resource "aws_s3_bucket" "s3_bucket" {
   acl           = var.acl
 
   dynamic "grant" {
-    for_each = var.grant == {} ? [] : [var.grant]
+    for_each = var.grant
     content {
       id          = lookup(grant.value, "id", null)
       permissions = grant.value.permissions
