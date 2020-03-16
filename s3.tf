@@ -1,7 +1,28 @@
 resource "aws_s3_bucket" "s3_bucket" {
   bucket        = var.bucket
-  force_destroy = var.force_destroy
+  bucket_prefix = var.bucket_prefix
+  acl           = var.acl
+  grant         = var.grant
+  policy        = var.policy
   tags          = var.tags
+  force_destroy = var.force_destroy
+
+  dynamic "versioning" {
+    for_each = var.versioning == {} ? [] : [var.versioning]
+    content {
+      enabled    = lookup(versioning.value, "enabled", null)
+      mfa_delete = lookup(versioning.value, "mfa_delete", null)
+    }
+  }
+
+  dynamic "logging" {
+    for_each = var.logging == {} ? [] : [var.logging]
+    content {
+      target_bucket = lookup(logging.value, "target_bucket", null)
+      target_prefix = lookup(logging.value, "target_prefix", null)
+    }
+  }
+
 
   dynamic "lifecycle_rule" {
     for_each = var.lifecycle_rule == {} ? [] : [var.lifecycle_rule]
@@ -70,19 +91,5 @@ resource "aws_s3_bucket" "s3_bucket" {
     }
   }
 
-  dynamic "versioning" {
-    for_each = var.versioning == {} ? [] : [var.versioning]
-    content {
-      enabled    = lookup(versioning.value, "enabled", null)
-      mfa_delete = lookup(versioning.value, "mfa_delete", null)
-    }
-  }
 
-  dynamic "logging" {
-    for_each = var.logging == {} ? [] : [var.logging]
-    content {
-      target_bucket = lookup(logging.value, "target_bucket", null)
-      target_prefix = lookup(logging.value, "target_prefix", null)
-    }
-  }
 }

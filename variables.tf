@@ -53,11 +53,11 @@ variable "lifecycle_rule" {
   type        = any
 }
 
-variable "replication_configuration" {
-  description = "A configuration of replication configuration"
-  default     = {}
-  type        = any
-}
+# variable "replication_configuration" {
+#   description = "A configuration of replication configuration"
+#   default     = {}
+#   type        = any
+# }
 
 variable "server_side_encryption_configuration" {
   description = "A configuration of server-side encryption configuration"
@@ -65,8 +65,8 @@ variable "server_side_encryption_configuration" {
   default     = {}
 }
 
-variable "object_lock_configuration" {
-  description = "A configuration of S3 object locking"
-  default     = {}
-  type        = any
-}
+# variable "object_lock_configuration" {
+#   description = "A configuration of S3 object locking"
+#   default     = {}
+#   type        = any
+# }
