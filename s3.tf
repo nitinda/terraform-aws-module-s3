@@ -1,5 +1,5 @@
 resource "aws_s3_bucket" "s3_bucket" {
-  bucket        = var.s3_project_bucket_name
+  bucket        = var.bucket
   force_destroy = var.force_destroy
   tags          = var.tags
 

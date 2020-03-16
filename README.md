@@ -1,53 +1,46 @@
-# Terraform Module Name: terraform-module-aws-s3
+# _Terraform Module Name: terraform-module-aws-s3_
 
 
-## General
+## _General_
 
-This module may be used to create **_S3_** resources in AWS cloud provider..
-
----
-
-
-## Prerequisites
-
-This module needs **_Terraform 0.12.18_** or newer.
-You can download the latest Terraform version from [here](https://www.terraform.io/downloads.html).
-
-This module deploys aws services details are in respective feature branches.
+_This module may be used to create_ **_S3_** _resources in AWS cloud provider......._
 
 ---
 
-## Features Branches
 
-Below we are able to check the resources that are being created as part of this module call:
+## _Prerequisites_
 
+_This module needs_ **_Terraform 0.12.18_** _or newer._
+_You can download the latest Terraform version from_ [_here_](https://www.terraform.io/downloads.html).
 
-From branch : **_terraform-12/master_**
+_This module deploys aws services details are in respective feature branches._
 
-- **_S3 bucket (Terraform 12 supported code)_**
+---
+
+## _Features_
+
+_Below we are able to check the resources that are being created as part of this module call:_
+
+- **_S3 bucket_**
 
 
 ---
 
-## Below are the resources that are launched by this module
+## _Usage_
 
-- **_S3_**
+## _Using this repo_
 
-
----
-
-## Usage
-
-## Using this repo
-
-To use this module, add the following call to your code:
+_To use this module, add the following call to your code:_
 
 ```tf
-module "<layer>-s3-<AccountID>" {
+module "s3" {
   source = "git::https://github.com/nitinda/terraform-module-aws-s3.git?ref=terraform-12/master"
 
   ## Tags
-  common_tags = var.common_tags
+  tags = {
+      Project      = "POC"
+      Environment  = "prod"
+  }
 
   ##
   force_destroy          = true

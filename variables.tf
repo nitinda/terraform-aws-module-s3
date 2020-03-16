@@ -1,35 +1,72 @@
 ## S3
-variable "s3_project_bucket_name" {
+variable "bucket" {
   description = "The name of the bucket"
+  default     = null
 }
 
-variable "versioning" {
-  description = "S3 Object versioning Enable"
-  type        = map(string)
+variable "bucket_prefix" {
+  description = "Creates a unique bucket name beginning with the specified prefix"
+  default     = null
 }
 
-variable "lifecycle_rule" {
-  description = "A configuration of object lifecycle management"
-  type        = any
+variable "acl" {
+  description = "The canned ACL to apply."
+  default     = null
 }
 
-variable "server_side_encryption_configuration" {
-  description = "A configuration of server-side encryption configuration"
-  type        = any
+variable "grant" {
+  description = "An ACL policy grant"
+  default     = null
 }
 
-variable "bucket_public_access_block" {
-  description = "Manages S3 bucket-level Public Access Block configuration"
+variable "policy" {
+  description = "A valid bucket policy JSON document."
+  default     = null
+}
+
+variable "tags" {
+  description = "A mapping of tags to assign to the resource."
   type        = map(string)
 }
 
 variable "force_destroy" {
   description = "A boolean that indicates all objects"
   type        = bool
+  default     = false
 }
 
-## Tags
-variable "tags" {
-  description = "A mapping of tags to assign to the resource."
+variable "versioning" {
+  description = "S3 Object versioning Enable"
   type        = map(string)
+  default     = {}
+}
+
+variable "logging" {
+  description = "A settings of bucket logging"
+  type        = map(string)
+  default     = {}
+}
+
+variable "lifecycle_rule" {
+  description = "A configuration of object lifecycle management"
+  default     = {}
+  type        = any
+}
+
+variable "replication_configuration" {
+  description = "A configuration of replication configuration"
+  default     = {}
+  type        = any
+}
+
+variable "server_side_encryption_configuration" {
+  description = "A configuration of server-side encryption configuration"
+  type        = any
+  default     = {}
+}
+
+variable "object_lock_configuration" {
+  description = "A configuration of S3 object locking"
+  default     = {}
+  type        = any
 }
