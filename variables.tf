@@ -44,7 +44,7 @@ variable "versioning" {
 
 variable "logging" {
   description = "A settings of bucket logging"
-  type        = map(string)
+  type        = any
   default     = {}
 }
 
