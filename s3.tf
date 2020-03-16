@@ -23,7 +23,6 @@ resource "aws_s3_bucket" "s3_bucket" {
     }
   }
 
-
   dynamic "lifecycle_rule" {
     for_each = var.lifecycle_rule == {} ? [] : [var.lifecycle_rule]
     content {
@@ -67,6 +66,60 @@ resource "aws_s3_bucket" "s3_bucket" {
           date          = lookup(transition.value, "date", null)
           days          = lookup(transition.value, "days", null)
           storage_class = transition.value.storage_class
+        }
+      }
+    }
+  }
+
+  dynamic "replication_configuration" {
+    for_each = var.replication_configuration == {} ? [] : [var.replication_configuration]
+    content {
+      role = replication_configuration.value.role
+
+      dynamic "rules" {
+        for_each = lookup(replication_configuration.value, "rules", [])
+        content {
+          id       = lookup(rules.value, "id", null)
+          prefix   = lookup(rules.value, "prefix", null)
+          priority = lookup(rules.value, "priority", null)
+          status   = rules.value.status
+
+          dynamic "destination" {
+            for_each = lookup(rules.value, "destination", [])
+            content {
+              account_id         = lookup(destination.value, "account_id", null)
+              bucket             = destination.value.bucket
+              replica_kms_key_id = lookup(destination.value, "replica_kms_key_id", null)
+              storage_class      = lookup(destination.value, "storage_class", null)
+
+              dynamic "access_control_translation" {
+                for_each = lookup(destination.value, "access_control_translation", [])
+                content {
+                  owner = access_control_translation.value.owner
+                }
+              }
+            }
+          }
+
+          dynamic "filter" {
+            for_each = lookup(rules.value, "filter", [])
+            content {
+              prefix = lookup(filter.value, "prefix", null)
+              tags   = lookup(filter.value, "tags", null)
+            }
+          }
+
+          dynamic "source_selection_criteria" {
+            for_each = lookup(rules.value, "source_selection_criteria", [])
+            content {
+              dynamic "sse_kms_encrypted_objects" {
+                for_each = lookup(source_selection_criteria.value, "sse_kms_encrypted_objects", [])
+                content {
+                  enabled = sse_kms_encrypted_objects.value.enabled
+                }
+              }
+            }
+          }
         }
       }
     }
