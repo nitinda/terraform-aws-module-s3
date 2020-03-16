@@ -199,18 +199,18 @@ The variables required in order for the module to be successfully called from th
 
 |**_Variable_** | **_Description_** | **_Type_** | **_Argument Status_** |
 |:----|:----|-----:|:---:|
-| **_bucket_** | _The name of the bucket_ | _string_ | **_Optional <br/> - (Default - null)_** |
-| **_bucket\_prefix_** | _Creates a unique bucket name <br/> beginning with the specified prefix_ | _string_ | **_Optional <br/> - (Default - null)_** |
-| **_acl_** | _The canned ACL to apply_ | _string_ | **_Optional <br/> - (Default - null)_** |
-| **_grant_** | _An ACL policy grant_ | _any_ | **_Optional <br/> - (Default - [])_** |
-| **_policy_** | _A valid bucket policy JSON document_ | _any_ | **_Optional <br/> - (Default - null)_** |
+| **_bucket_** | _The name of the bucket_ | _string_ | **_Optional <br/> (Default - null)_** |
+| **_bucket\_prefix_** | _Creates a unique bucket name <br/> beginning with the specified prefix_ | _string_ | **_Optional <br/> (Default - null)_** |
+| **_acl_** | _The canned ACL to apply_ | _string_ | **_Optional <br/> (Default - null)_** |
+| **_grant_** | _An ACL policy grant_ | _any_ | **_Optional <br/> (Default - [])_** |
+| **_policy_** | _A valid bucket policy JSON document_ | _any_ | **_Optional <br/> (Default - null)_** |
 | **_tags_** | _A mapping of tags to assign to the resource_ | _map(string)_ | **_Required_** |
-| **_force\_destroy_** | _A boolean that indicates all objects_ | _bool_ | **_Optional <br/> - (Default - false)_** |
-| **_versioning_** | _S3 Object versioning Enable_ | _map(string)_ | **_Optional <br/> - (Default - {})_** |
-| **_logging_** | _A settings of bucket logging_ | _any_ | **_Optional <br/> - (Default - {})_** |
-| **_lifecycle\_rule_** | _A configuration of <br/> object lifecycle management_ | _any_ | **_Optional <br/> - (Default - {})_** |
-| **_replication\_configuration_** | _A configuration of replication configuration_ | _any_ | **_Optional <br/> - (Default - {})_** |
-| **_server\_side\_encryption\_configuration_** | _A configuration of server-side encryption_ | _any_ | **_Optional <br/> - (Default - {})_** |
+| **_force\_destroy_** | _A boolean that indicates all objects_ | _bool_ | **_Optional <br/> (Default - false)_** |
+| **_versioning_** | _S3 Object versioning Enable_ | _map(string)_ | **_Optional <br/> (Default - {})_** |
+| **_logging_** | _A settings of bucket logging_ | _any_ | **_Optional <br/> (Default - {})_** |
+| **_lifecycle\_rule_** | _A configuration of <br/> object lifecycle management_ | _any_ | **_Optional <br/> (Default - {})_** |
+| **_replication\_configuration_** | _A configuration of replication configuration_ | _any_ | **_Optional <br/> (Default - {})_** |
+| **_server\_side\_encryption\_configuration_** | _A configuration of server-side encryption_ | _any_ | **_Optional <br/> (Default - {})_** |
 
 
 ---
