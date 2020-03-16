@@ -1,5 +1,16 @@
 # _Terraform Module Name: terraform-module-aws-s3_
 
+<!--BEGIN STABILITY BANNER-->
+---
+
+![_Code : Stable_](https://img.shields.io/badge/Code-Stable-brightgreen?style=for-the-badge&logo=github)
+
+> **_This is a stable example. It should successfully build out of the box_**
+>
+> _This examples does is built on Construct Libraries marked "Stable" and does not have any infrastructure prerequisites to build._
+
+---
+<!--END STABILITY BANNER-->
 
 ## _General_
 
@@ -77,8 +88,6 @@ module "s3" {
           days = 90
       }
   }
-
-
 }
 ```
 ---
@@ -90,15 +99,21 @@ The variables required in order for the module to be successfully called from th
 
 |**_Variable_** | **_Description_** | **_Type_** | **_Argument Status_** |
 |:----|:----|-----:|:---:|
-| **bucket\_name** | Bucket name | string | **_Required_** |
-| **_lifecycle\_rule_** | Lifecycle rule | any | **_Required_** |
-| **_tags_** | A mapping of tags to assign to the resource | map(string) | **_Required_** |
-| **_server\_side\_encryption\_configuration_** | A configuration of server-side encryption | any | **_Required_** |
-| **_bucket\_public\_access\_block_** | Manages S3 account-level Public Access | map(string) | **_Required_** |
-| **_versioning_** | S3 Object versioning Enable | map(string) | **_Required_** |
-| **_force\_destroy_** | A boolean that indicates all objects | bool | **_Required_** |
+| **_bucket_** | _The name of the bucket_ | _string_ | **_Optional <br/> - (Default - null)_** |
+| **_bucket\_prefix_** | _Creates a unique bucket name beginning with the specified prefix_ | _string_ | **_Optional <br/> - (Default - null)_** |
+| **_acl_** | _The canned ACL to apply_ | _string_ | **_Optional <br/> - (Default - null)_** |
+| **_grant_** | _An ACL policy grant_ | _any_ | **_Optional <br/> - (Default - [])_** |
+| **_policy_** | _A valid bucket policy JSON document_ | _any_ | **_Optional <br/> - (Default - null)_** |
+| **_tags_** | _A mapping of tags to assign to the resource_ | _map(string)_ | **_Required_** |
+| **_force\_destroy_** | _A boolean that indicates all objects_ | _bool_ | **_Optional <br/> - (Default - false)_** |
+| **_versioning_** | _S3 Object versioning Enable_ | _map(string)_ | **_Optional <br/> - (Default - {})_** |
+| **_logging_** | _A settings of bucket logging_ | _any_ | **_Optional <br/> - (Default - {})_** |
+| **_lifecycle\_rule_** | _A configuration of object lifecycle management_ | _any_ | **_Optional <br/> - (Default - {})_** |
+| **_replication\_configuration_** | _A configuration of replication configuration_ | _any_ | **_Optional <br/> - (Default - {})_** |
+| **_server\_side\_encryption\_configuration_** | _A configuration of server-side encryption_ | _any_ | **_Optional <br/> - (Default - {})_** |
 
 
+---
 
 
 ## Outputs
@@ -107,36 +122,27 @@ The variables required in order for the module to be successfully called from th
 - **_id_**
 
 
+---
 
-### Usage
-In order for the variables to be accessed on module level please use the syntax below:
+
+### _Usage_
+
+_In order for the variables to be accessed at module level please use the syntax below:_
 
 ```tf
 module.<module_name>.<output_variable_name>
 ```
 
-If an output variable needs to be exposed on root level in order to be accessed through terraform state file follow the steps below:
 
-- Include the syntax above in the network layer output terraform file.
-- Add the code snippet below to the variables/global_variables file.
+_The output variable is able to be accessed through terraform state file using the syntax below:_
 
 ```tf
-data "terraform_remote_state" "<module_name>" {
-  backend = "s3"
-
-  config {
-    bucket = <bucket_name> (i.e. "s3-webstack-terraform-state")
-    key    = <state_file_relative_path> (i.e. "env:/${terraform.workspace}/4_Networking/terraform.tfstate")
-    region = <bucket_region> (i.e. "eu-central-1")
-  }
-}
+data.terraform_remote_state.<layer_name>.<output_variable_name>
 ```
 
-- The output variable is able to be accessed through terraform state file using the syntax below:
+---
 
-```tf
-"${data.terraform_remote_state.<module_name>.<output_variable_name>}"
-```
 
-## Authors
-Module maintained by Module maintained by the - **_Nitin Das_**
+## _Authors_
+
+_Module maintained by Module maintained by the -_ **_Nitin Das_**
