@@ -2,7 +2,17 @@ resource "aws_s3_bucket" "s3_bucket" {
   bucket        = var.bucket
   bucket_prefix = var.bucket_prefix
   acl           = var.acl
-  grant         = var.grant
+
+  dynamic "grant" {
+    for_each = var.grant == {} ? [] : [var.grant]
+    content {
+      id          = lookup(grant.value, "id", null)
+      permissions = grant.value.permissions
+      type        = grant.value.type
+      uri         = lookup(grant.value, "uri", null)
+    }
+  }
+
   policy        = var.policy
   tags          = var.tags
   force_destroy = var.force_destroy
