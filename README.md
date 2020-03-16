@@ -200,7 +200,7 @@ The variables required in order for the module to be successfully called from th
 |**_Variable_** | **_Description_** | **_Type_** | **_Argument Status_** |
 |:----|:----|-----:|:---:|
 | **_bucket_** | _The name of the bucket_ | _string_ | **_Optional <br/> - (Default - null)_** |
-| **_bucket\_prefix_** | _Creates a unique bucket name beginning with the specified prefix_ | _string_ | **_Optional <br/> - (Default - null)_** |
+| **_bucket\_prefix_** | _Creates a unique bucket name <br/> beginning with the specified prefix_ | _string_ | **_Optional <br/> - (Default - null)_** |
 | **_acl_** | _The canned ACL to apply_ | _string_ | **_Optional <br/> - (Default - null)_** |
 | **_grant_** | _An ACL policy grant_ | _any_ | **_Optional <br/> - (Default - [])_** |
 | **_policy_** | _A valid bucket policy JSON document_ | _any_ | **_Optional <br/> - (Default - null)_** |
