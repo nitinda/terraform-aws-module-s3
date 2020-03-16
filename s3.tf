@@ -76,5 +76,13 @@ resource "aws_s3_bucket" "s3_bucket" {
       enabled    = lookup(versioning.value, "enabled", null)
       mfa_delete = lookup(versioning.value, "mfa_delete", null)
     }
-  } 
+  }
+
+  dynamic "logging" {
+    for_each = var.logging == {} ? [] : [var.logging]
+    content {
+      target_bucket = lookup(logging.value, "target_bucket", null)
+      target_prefix = lookup(logging.value, "target_prefix", null)
+    }
+  }
 }
