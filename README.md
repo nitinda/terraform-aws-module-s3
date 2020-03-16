@@ -1,52 +1,52 @@
-# Terraform Module Name: terraform-module-aws-s3
+# _Terraform Module Name: terraform-module-aws-s3_
 
 
-## General
+## _General_
 
-This module may be used to create **_S3_** resources in AWS cloud provider..
-
----
-
-
-## Prerequisites
-
-This module needs **_Terraform 0.11.14_** or newer.
-You can download the latest Terraform version from [here](https://www.terraform.io/downloads.html).
-
-This module deploys aws services details are in respective feature branches.
+_This module may be used to create_ **_S3_** _resources in AWS cloud provider........_
 
 ---
 
-## Features Branches
 
-Below we are able to check the resources that are being created as part of this module call:
+## _Prerequisites_
 
-From branch : **_terraform-11/master_**
+_This module needs_ **_Terraform 0.11.14_** _or newer._
+_You can download the latest Terraform version from_ [_here_](https://www.terraform.io/downloads.html).
+
+_This module deploys aws services details are in respective feature branches._
+
+---
+
+## _Features Branches_
+
+_Below we are able to check the resources that are being created as part of this module call:_
+
+_From branch :_ **_terraform-11/master_**
 
 - **_S3 bucket (Terraform 11 supported code)_**
 
-From branch : **_terraform-12/master_**
+_From branch :_ **_terraform-12/master_**
 
 - **_S3 bucket (Terraform 12 supported code)_**
 
 
 ---
 
-## Below are the resources that are launched by this module
+## _Below are the resources that are launched by this module_
 
 - **_S3_**
 
 
 ---
 
-## Usage
+## _Usage_
 
-## Using this repo
+## _Using this repo_
 
-To use this module, add the following call to your code:
+_To use this module, add the following call to your code:_
 
 ```tf
-module "<layer>-s3-<AccountID>" {
+module "s3" {
   source = "git::https://github.com/nitinda/terraform-module-aws-s3.git?ref=master"
 
 
@@ -54,58 +54,53 @@ module "<layer>-s3-<AccountID>" {
 ```
 ---
 
-## Inputs
+## _Inputs_
 
-The variables required in order for the module to be successfully called from the deployment repository are the following:
-
-
-| Variable               |          Description         |    Type    |
-|------------------------|------------------------------|------------|
-|                        |                              |            |
+_The variables required in order for the module to be successfully called from the deployment repository are the following:_
 
 
-
-Details are in respective branch.
-
-
-## Outputs
-
-- **_s3\_arn_**
-- **s3\_id**
+|**_Variable_** | **_Description_** | **_Type_** | **_Argument Status_** |
+|:----|:----|-----:|:---:|
 
 
-Details are in respective branch.
+
+_Details are in respective branch._
 
 
-### Usage
-In order for the variables to be accessed on module level please use the syntax below:
+--- 
 
-```tf
-module.<module_name>.<output_variable_name>
-```
+## _Outputs_
 
-If an output variable needs to be exposed on root level in order to be accessed through terraform state file follow the steps below:
+### _General_
 
-- Include the syntax above in the network layer output terraform file.
-- Add the code snippet below to the variables/global_variables file.
+_This module has the following outputs:_
+
+- **_arn_**
+- **_id_**
+
+
+---
+
+
+### _Usage_
+
+_In order for the variables to be accessed at module level please use the syntax below:_
 
 ```tf
-data "terraform_remote_state" "<module_name>" {
-  backend = "s3"
-
-  config {
-    bucket = <bucket_name> (i.e. "s3-webstack-terraform-state")
-    key    = <state_file_relative_path> (i.e. "env:/${terraform.workspace}/4_Networking/terraform.tfstate")
-    region = <bucket_region> (i.e. "eu-central-1")
-  }
-}
+"${module.<module_name>.<output_variable_name>}"
 ```
 
-- The output variable is able to be accessed through terraform state file using the syntax below:
+
+_The output variable is able to be accessed through terraform state file using the syntax below:_
 
 ```tf
-"${data.terraform_remote_state.<module_name>.<output_variable_name>}"
+"${data.terraform_remote_state.<layer_name>.<output_variable_name>}"
 ```
 
-## Authors
-Module maintained by Module maintained by the - **_Nitin Das_**
+
+---
+
+
+## _Authors_
+
+_Module maintained by Module maintained by the -_ **_Nitin Das_**
