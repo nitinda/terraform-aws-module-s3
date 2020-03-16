@@ -54,8 +54,108 @@ module "s3" {
   }
 
   ##
-  force_destroy          = true
-  s3_project_bucket_name = "s3-project-bucket-name"
+  bucket_prefix = "s3-project-bucket-name"
+
+}
+```
+
+```tf
+module "s3" {
+  source = "git::https://github.com/nitinda/terraform-module-aws-s3.git?ref=terraform-12/master"
+
+  ## Tags
+  tags = {
+      Project      = "POC"
+      Environment  = "prod"
+  }
+
+  ##
+  bucket = "s3-project-bucket-name"
+
+}
+```
+
+```tf
+module "s3" {
+  source = "git::https://github.com/nitinda/terraform-module-aws-s3.git?ref=terraform-12/master"
+
+  ## Tags
+  tags = {
+      Project      = "POC"
+      Environment  = "prod"
+  }
+
+  ##
+  force_destroy = true
+  bucket        = "s3-project-bucket-name"
+
+}
+```
+
+```tf
+module "s3" {
+  source = "git::https://github.com/nitinda/terraform-module-aws-s3.git?ref=terraform-12/master"
+
+  ## Tags
+  tags = {
+      Project      = "POC"
+      Environment  = "prod"
+  }
+
+  ##
+  force_destroy = true
+  bucket        = "s3-project-bucket-name"
+
+  versioning = {
+      enabled = false
+  }
+}
+```
+
+
+```tf
+module "s3" {
+  source = "git::https://github.com/nitinda/terraform-module-aws-s3.git?ref=terraform-12/master"
+
+  ## Tags
+  tags = {
+      Project      = "POC"
+      Environment  = "prod"
+  }
+
+  ##
+  force_destroy = true
+  bucket        = "s3-project-bucket-name"
+
+  versioning = {
+      enabled = false
+  }
+
+  server_side_encryption_configuration = {
+      rule = {
+          apply_server_side_encryption_by_default = {
+              sse_algorithm = "AES256"
+          }
+      }
+  }
+
+
+}
+```
+
+```tf
+module "s3" {
+  source = "git::https://github.com/nitinda/terraform-module-aws-s3.git?ref=terraform-12/master"
+
+  ## Tags
+  tags = {
+      Project      = "POC"
+      Environment  = "prod"
+  }
+
+  ##
+  force_destroy = true
+  bucket        = "s3-project-bucket-name"
 
   versioning = {
       enabled = false
