@@ -53,11 +53,11 @@ variable "lifecycle_rule" {
   type        = any
 }
 
-# variable "replication_configuration" {
-#   description = "A configuration of replication configuration"
-#   default     = {}
-#   type        = any
-# }
+variable "replication_configuration" {
+  description = "A configuration of replication configuration"
+  default     = {}
+  type        = any
+}
 
 variable "server_side_encryption_configuration" {
   description = "A configuration of server-side encryption configuration"
