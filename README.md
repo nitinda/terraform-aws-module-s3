@@ -1,5 +1,7 @@
 # _Terraform Module Name: terraform-module-aws-s3_
 
+_Terraform Module for_ **_AWS S3 bucket_**
+
 <!--BEGIN STABILITY BANNER-->
 ---
 
